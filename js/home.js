@@ -9,19 +9,23 @@
 
 // fetchAll(API)
 
-const API = {
+export const API = {
     apiKey: `def9899adf29e78728794d71b6213684`,
     imgUrl: `https://image.tmdb.org/t/p/w500`,
     genresUrl: `https://api.themoviedb.org/3/genre/movie/list?`,
-    movieUrl: `https://api.themoviedb.org/3/discover/movie?`
+    movieUrl: `https://api.themoviedb.org/3/movie/popular?`,
+    detailUrl: `https://api.themoviedb.org/3/movie/`,
 }
 
 const main = document.querySelector('.main');
+
+const movies = document.querySelector('.movie');
 
 
 fetch(`${API.genresUrl}api_key=${API.apiKey}`)
     .then(response => response.json())
     .then(data => {
+        console.log(data)
         data.genres.forEach(item => {
             getMoviesByGenres(item.id, item.name)
         })
@@ -29,14 +33,13 @@ fetch(`${API.genresUrl}api_key=${API.apiKey}`)
 
 
 const getMoviesByGenres = (id, genres) => {
-    const randomPage = Math.floor(Math.random() * (500 - 1) + 1 ) ;
-    fetch(`${API.movieUrl}api_key=${API.apiKey}&with_genres=${id}&page=${randomPage}`)
+    const randomPage = Math.floor(Math.random() * (10 - 1) + 1 ) ;
+    fetch(`${API.movieUrl}api_key=${API.apiKey}&with_genres=${id}&include_adult=false&page=${randomPage}`)
         .then(response => response.json())
         .then(data => {
             makeCategoryElement(`${genres}`, data.results);
             
         })
-        .catch(e => console.log(e));
 };
 
 
@@ -70,7 +73,7 @@ const makeCards = (id, data) => {
 
         movieContainer.innerHTML += 
         `
-        <div class="movie" onclick="location.href = 'index.html?id=${item.id}'">
+        <div class="movie" onclick="location.href = 'movie.html?id=${item.id}'">
         <img src="${API.imgUrl}${item.backdrop_path}" alt="">
         <p class="movie-title">${item.title}</p>
         </div>
