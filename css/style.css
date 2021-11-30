@@ -8,27 +8,61 @@ body{
     width: 100%;
     position: relative;
     background: #181818;
-    font-family: 'roboto', sans-serif;
+    font-family: 'poppins', sans-serif;
     color: #fff;
 }
 
-.navbar{
+/* .nav{
+    position: fixed;
     width: 100%;
     height: 60px;
-    position: fixed;
-    top: 0;
-    z-index: 9;
-    background: #000;
-    padding: 0 2.5vw;
+
     display: flex;
     align-items: center;
+} */
+
+.nav {
+    position: fixed;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.nav .logo {
+    align-self: flex-start;
+    margin-top: 10px;
+    margin-left: 60px;
+
+    color: #E50914;
+
+
+    height: 30px;
+}
+.btn-home {
+    position: absolute;
+    align-self: flex-end;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    background: none ;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    top: 10px;
+    right: 60px;
+
+    cursor: pointer;
+    
 }
 
 .main{
     position: relative;
-    margin-top: 60px;
+
     width: 100%;
-    padding: 40px 2.5vw;
+    padding: 60px 60px;
     color: #fff;
 }
 
@@ -41,14 +75,20 @@ body{
 .info{
     width: 50%;
     font-size: 20px;
-    margin-top: 10px;
+    margin-bottom: 70px;
 }
 
+
+
 .movie-category{
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 500;
     margin-bottom: 20px;
     text-transform: capitalize;
+}
+
+.movie-category::after {
+    content: " >";
 }
 
 .movie-container{
@@ -59,6 +99,8 @@ body{
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
+
+    margin-bottom: 30px;
 }
 
 /* .movie-container::-webkit-scrollbar{
@@ -67,22 +109,36 @@ body{
 
 .movie{
     flex: 0 0 auto;
-    width: 24%;
+    width: 300px;
     height: 200px;
     text-align: center;
-    margin-right: 10px;
+    margin-right: 25px;
     cursor: pointer;
     position: relative;
-    
+    font-size: 0.8rem;
+
 }
 
 .movie img{
     width: 100%;
     height: 170px;
-    object-fit: cover;
+    background-size: cover;
+    border-radius: 30px;
+    opacity: 0.5;
+
+}
+
+.movie img:hover {
+    opacity: 1;
 }
 
 .movie p{
-    height: 20px;
+    height: 50px;
     overflow: hidden;
+    position: absolute;
+    margin-top: -60px;
+    font-weight: 500;
+    font-size: 1rem;
+    left: 15%;
+    text-align: left;
 }
