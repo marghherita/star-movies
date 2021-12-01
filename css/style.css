@@ -1,70 +1,22 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-body{
-    width: 100%;
-    position: relative;
-    background: #181818;
-    font-family: 'poppins', sans-serif;
-    color: #fff;
-}
-
-/* .nav{
-    position: fixed;
-    width: 100%;
-    height: 60px;
-
-    display: flex;
-    align-items: center;
-} */
-
-.nav {
-    position: fixed;
-    height: 60px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
-
-.nav .logo {
-    align-self: flex-start;
-    margin-top: 10px;
-    margin-left: 60px;
-
-    color: #E50914;
-
-
-    height: 30px;
-}
-.btn-home {
+input {
     position: absolute;
     align-self: flex-end;
-    border-radius: 20px;
-    padding: 10px 20px;
-    color: #fff;
-    background: none ;
-    border: none;
-    font-size: 1rem;
-    font-weight: bold;
-    letter-spacing: 2px;
 
-    top: 10px;
+    top: 20px;
     right: 60px;
 
-    cursor: pointer;
-    
+    width: 300px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+    border: none;
+
+    padding: 10px;
 }
 
-.main{
-    position: relative;
-
-    width: 100%;
-    padding: 60px 60px;
-    color: #fff;
-}
 
 .heading{
     text-transform: capitalize;
@@ -93,7 +45,7 @@ body{
 
 .movie-container{
     width: 100%;
-    height: 200px;
+    height: 220px;
     display: flex;
     align-items: center;
     overflow-x: auto;
@@ -132,13 +84,46 @@ body{
     opacity: 1;
 }
 
-.movie p{
+.movie-title{
     height: 50px;
     overflow: hidden;
     position: absolute;
-    margin-top: -60px;
+    margin-top: -65px;
     font-weight: 500;
     font-size: 1rem;
-    left: 15%;
+    left: 10%;
     text-align: left;
+
 }
+
+.stars {
+    height: 50px;
+    overflow: hidden;
+    position: absolute;
+    margin-top: -150px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    left: 10%;
+    text-align: left;
+    letter-spacing: 1px;
+}
+
+.info-btn {
+    padding: 10px 15px;
+    border-radius: 50%;
+    border: none;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.397);
+
+    position: absolute;
+    margin-top: 15px;
+
+    right: 10%;
+
+    font-size: 1.1rem;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+
