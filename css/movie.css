@@ -1,5 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+:root {
+    --star-size: 60px;
+    --star-color: #fff;
+    --star-background: #fc0;
+}
+
+.stars {
+    margin-top: 20px;
+    --percent: calc(var(--rating) / 10 * 100%);
+
+    display: inline-block;
+
+    line-height: 1;
+
+    font-size: 1vw;
+}
+
+.stars::before {
+    content: '★★★★★★★★★★';
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 
 .movie-info {
     width: 100%;
@@ -9,10 +34,9 @@
 }
 
 .movie-detail {
-    width: 80%;
+    width: 50%;
     height: 100%;
-    background: rgb(24, 24, 24);
-    background: linear-gradient(90deg, rgba(24, 24, 24, 1), rgba(24, 24, 24, 0) 100%);
+    background: linear-gradient(90deg, rgba(24, 24, 24, 1), rgba(24, 24, 24, 0) 90%);
     padding: 80px;
     display: flex;
     flex-direction: column;
@@ -21,7 +45,7 @@
 }
 
 .movie-name {
-    font-size:30px;
+    font-size: 36px;
     font-weight: 500;
 }
 
@@ -35,7 +59,13 @@
     line-height: 20px;
 }
 
-header {
-    background: none;
+
+.cast {
+    margin: 10px 0;
+    line-height: 20px;
 }
 
+.cast span {
+    font-weight: 600;
+
+}

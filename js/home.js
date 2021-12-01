@@ -1,4 +1,3 @@
-// import { API } from "./utils.js";
 
 // const fetchAll = async (API) => {
 //     const response = await Promise.all(API.map(url => fetch(url)))
@@ -7,20 +6,9 @@
 //     return jsons;
 //   }
 
-// fetchAll(API)
-
-export const API = {
-    apiKey: `def9899adf29e78728794d71b6213684`,
-    imgUrl: `https://image.tmdb.org/t/p/w500`,
-    genresUrl: `https://api.themoviedb.org/3/genre/movie/list?`,
-    movieUrl: `https://api.themoviedb.org/3/movie/popular?`,
-    detailUrl: `https://api.themoviedb.org/3/movie/`,
-}
+import { API, render } from "./utils.js"
 
 const main = document.querySelector('main');
-
-const movies = document.querySelector('.movie');
-
 
 fetch(`${API.genresUrl}api_key=${API.apiKey}`)
     .then(response => response.json())
@@ -44,23 +32,24 @@ const getMoviesByGenres = (id, genres) => {
 
 
 const makeCategoryElement = (category, data) => {
-    main.innerHTML += `
-        <div class="movie-list">
+
+    render(main, `
+
+    <div class="movie-list">
     
-            <h1 class="movie-category">${category} Movies</h1>
-    
-            <div class="movie-container" id="${category}">
-    
-            </div>
-    
-    
+        <h1 class="movie-category">${category} Movies</h1>
+
+        <div class="movie-container" id="${category}">
+
         </div>
-        `;
+
+    </div>
+
+    `);
+
     makeCards(category, data);
 
 }
-
-const render = (container, content) => (container.innerHTML += content);
 
 const makeCards = (id, data) => {
     
@@ -69,7 +58,7 @@ const makeCards = (id, data) => {
     data.map(
         (item) => {
 
-        if (item.backdrop_path == null) {
+        if (item.backdrop_path === null) {
             item.backdrop_path = item.poster_path;
             if (item.backdrop_path == null) {
                 return;
@@ -114,3 +103,4 @@ const makeCards = (id, data) => {
 //     //    console.log(data)
 
 //      render(movieContainer, results)   
+

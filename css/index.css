@@ -1,22 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-input {
-    position: absolute;
-    align-self: flex-end;
-
-    top: 20px;
-    right: 60px;
-
-    width: 300px;
-
-    overflow: hidden;
-
-    border-radius: 20px;
-    border: none;
-
-    padding: 10px;
-}
-
 
 .heading{
     text-transform: capitalize;
@@ -24,13 +5,26 @@ input {
     font-size: 50px;
 }
 
-.info{
-    width: 50%;
-    font-size: 20px;
-    margin-bottom: 70px;
+/* .info{
+    width: 100%;
+    margin: 70px 0;
+
+    display: flex;
+    justify-content: space-between;
 }
 
+.info p {
+    font-size: 1rem;
+    width: 48%;
 
+}
+
+.info-div {
+    width: 48%;
+    height: 200px;
+    border: 2px solid red;
+    border-radius: 50px;
+} */
 
 .movie-category{
     font-size: 25px;
@@ -39,9 +33,6 @@ input {
     text-transform: capitalize;
 }
 
-.movie-category::after {
-    content: " >";
-}
 
 .movie-container{
     width: 100%;
@@ -61,6 +52,7 @@ input {
 
 .movie{
     flex: 0 0 auto;
+    justify-content: space-around;
     width: 300px;
     height: 200px;
     text-align: center;
@@ -70,6 +62,7 @@ input {
     font-size: 0.8rem;
 
 }
+
 
 .movie img{
     width: 100%;
@@ -108,22 +101,24 @@ input {
     letter-spacing: 1px;
 }
 
-.info-btn {
-    padding: 10px 15px;
-    border-radius: 50%;
-    border: none;
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.397);
 
-    position: absolute;
-    margin-top: 15px;
+#hero {
+    width: 100%;
+    height: 600px;
 
-    right: 10%;
+    padding-top: 60px;
 
-    font-size: 1.1rem;
-    font-weight: 500;
+    
+    background-image: url("https://image.tmdb.org/t/p/original/xnqust9Li4oxfhXD5kcPi3UC8i4.jpg");
+    background-size: cover;
 
-    cursor: pointer;
 }
 
+.gradient {
+
+    /* margin-top: 250px; */
+
+    height: 540px;
+    background: linear-gradient(180deg, rgba(97, 97, 97, 0.13) 0%, rgb(24, 24, 24) 90%);
+}
 
