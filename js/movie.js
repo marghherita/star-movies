@@ -1,61 +1,72 @@
-import { API } from "./home.js"
+import { API, render, q, urlYt } from "./utils.js";
 
-let movieId = location.search.replace("?id=", "");
+const movieId = location.search.replace("?id=", "");
+const title = q("title");
+const infoContainer = q(".movie-info");
 
-console.log(movieId)
-
-const render = (container, content) => (container.innerHTML = content);
-
+// console.log(movieId)
 
 fetch(`${API.detailUrl}${movieId}?api_key=${API.apiKey}&language=en-US`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
+    .then((response) => response.json())
+    .then((data) => {
+        // console.log(data);
         makeMovieDeatils(data);
-
     });
 
-    const makeMovieDeatils = (data) => {
-
-        const container = document.querySelector('.movie-info')
-        const title = document.querySelector('title');
-    
-        let originImgUrl = `https://image.tmdb.org/t/p/original${data.backdrop_path}`;
-
-        
-        if(data.backdrop_path == null){
-            data.backdrop_path = data.poster_path;
+fetch(`${API.detailUrl}${movieId}/credits?api_key=${API.apiKey}&language=en-US`)
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+        const cast = q('.cast');
+        for (let i = 0; i < 5; i++) {
+            cast.innerHTML += data.cast[i].name += ", "
         }
-        
-        container.style.backgroundImage = `url(${originImgUrl}`
+    });
 
-        title.innerHTML = data.title;
-        
-        render(container, `
 
-        <div class="movie-detail">
-        <h1 class="movie-name">${data.title}</h1>
-        <p class="genres">${data.release_date.split('-')[0]} | ${data.genres[0].name}</p>
-        <p class="description">${data.overview}</p>
-        <p class="starring"></p>
-        </div>
-    
-        `)
 
-        
+const makeMovieDeatils = (detail) => {
+
+
+    // ---------- Gestione title pagina
+    title.innerHTML = detail.title;
+
+    // ---------- Gestione immagine background 
+    const originImgUrl = `https://image.tmdb.org/t/p/original${detail.backdrop_path}`;
+    infoContainer.style.backgroundImage = `url(${originImgUrl}`;
+
+    if (detail.backdrop_path === null) {
+        detail.backdrop_path = detail.poster_path;
     }
 
-
-    const btnHome = document.querySelector('.btn-home');
-
-    btnHome.addEventListener('click', () => {
-        location.href = 'index.html'
-    })
+    // ---------- Gestione dettagli film 
 
 
-
-
-
+    const details =
+        `
     
+    <div class="movie-detail">
+    <h1 class="movie-name">${detail.title}</h1>
+    <div class="stars" style="--rating: ${detail.vote_average};" aria-label="Rating of this product is 2.3 out of 5.">
+    <p class="genres">${detail.release_date.split("-")[0]} | ${detail.genres[0].name} | ${detail.runtime}'</p>
+    <p class="description">${detail.overview}</p>
+    <p class="cast"><span>Cast: </span></p>
+    </div>
+    
+    `;
+
+
+
+    render(infoContainer, details);
+
+};
+
+// ----------- REDIRECT ALLA HOME TRAMITE PULSANTE
+
+const btnHome = q(".btn-home");
+
+btnHome.addEventListener("click", () => {
+    location.href = "index.html";
+});
 
 
