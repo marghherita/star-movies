@@ -7,7 +7,7 @@ console.log(movieId)
 const render = (container, content) => (container.innerHTML = content);
 
 
-fetch(`${API.detailUrl}${movieId}?api_key=${API.apiKey}&language=it-IT`)
+fetch(`${API.detailUrl}${movieId}?api_key=${API.apiKey}&language=en-US`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
@@ -18,20 +18,19 @@ fetch(`${API.detailUrl}${movieId}?api_key=${API.apiKey}&language=it-IT`)
     const makeMovieDeatils = (data) => {
 
         const container = document.querySelector('.movie-info')
-        const movieName = document.querySelector('.movie-name');
-        const genres = document.querySelector('.genres');
-        const des = document.querySelector('.des');
         const title = document.querySelector('title');
     
-
-        // title.innerHTML = movieName.innerHTML = data.title;
-
         let originImgUrl = `https://image.tmdb.org/t/p/original${data.backdrop_path}`;
 
+        
         if(data.backdrop_path == null){
             data.backdrop_path = data.poster_path;
         }
+        
+        container.style.backgroundImage = `url(${originImgUrl}`
 
+        title.innerHTML = data.title;
+        
         render(container, `
 
         <div class="movie-detail">
@@ -42,12 +41,6 @@ fetch(`${API.detailUrl}${movieId}?api_key=${API.apiKey}&language=it-IT`)
         </div>
     
         `)
-
-        container.style.backgroundImage = `url(${originImgUrl}`
-
-        
-        // container.style.backgroundImage = `url(${originImgUrl})`;
-
 
         
     }
