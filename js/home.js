@@ -1,14 +1,16 @@
-
-// const fetchAll = async (API) => {
-//     const response = await Promise.all(API.map(url => fetch(url)))
-//     const jsons = await Promise.all(response.map(res => res.json()))
-//     console.log(jsons)
-//     return jsons;
-//   }
-
 import { API, render } from "./utils.js"
 
 const main = document.querySelector('main');
+
+
+// const x = async () => {
+//     const response = await fetch(`${API.genresUrl}api_key=${API.apiKey}`);
+//     const data = await response.jsons();
+
+//     data.genres.forEach((item) => {
+//         getMoviesByGenres(item.id, item.name)
+//     })
+// }
 
 fetch(`${API.genresUrl}api_key=${API.apiKey}`)
     .then(response => response.json())
