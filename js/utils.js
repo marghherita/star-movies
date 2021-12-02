@@ -1,4 +1,4 @@
-export { render, q, API, urlYt };
+export { render, q, API, urlYt, movieId };
 
 const q = (selector) => document.querySelector(selector);
 
@@ -12,7 +12,7 @@ const API = {
     detailUrl: `https://api.themoviedb.org/3/movie/`,
 }
 
-const urlYt = "https://www.youtube.com/watch?v=";
+const urlYt = "https://www.youtube.com/embed/";
 
 
 
@@ -21,3 +21,6 @@ window.addEventListener("scroll", () => {
     const header = document.querySelector("header");
     header.classList.toggle("sticky", window.scrollY > 0)
 })
+
+
+const movieId = location.search.replace("?id=", "");

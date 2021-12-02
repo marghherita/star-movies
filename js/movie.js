@@ -1,6 +1,5 @@
-import { API, render, q, urlYt } from "./utils.js";
+import { API, render, q, movieId } from "./utils.js";
 
-const movieId = location.search.replace("?id=", "");
 const title = q("title");
 const infoContainer = q(".movie-info");
 
@@ -16,7 +15,6 @@ fetch(`${API.detailUrl}${movieId}?api_key=${API.apiKey}&language=en-US`)
 fetch(`${API.detailUrl}${movieId}/credits?api_key=${API.apiKey}&language=en-US`)
     .then((response) => response.json())
     .then((data) => {
-        console.log(data);
         const cast = q('.cast');
         for (let i = 0; i < 5; i++) {
             cast.innerHTML += data.cast[i].name += ", "
@@ -47,6 +45,7 @@ const makeMovieDeatils = (detail) => {
     
     <div class="movie-detail">
     <h1 class="movie-name">${detail.title}</h1>
+    <div class="trailer"></div>
     <div class="stars" style="--rating: ${detail.vote_average};" aria-label="Rating of this product is 2.3 out of 5.">
     <p class="genres">${detail.release_date.split("-")[0]} | ${detail.genres[0].name} | ${detail.runtime}'</p>
     <p class="description">${detail.overview}</p>
@@ -68,5 +67,3 @@ const btnHome = q(".btn-home");
 btnHome.addEventListener("click", () => {
     location.href = "index.html";
 });
-
-
