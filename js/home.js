@@ -1,16 +1,6 @@
-import { API, render } from "./utils.js"
+import { API, q, render } from "./utils.js"
 
 const main = document.querySelector('main');
-
-
-// const x = async () => {
-//     const response = await fetch(`${API.genresUrl}api_key=${API.apiKey}`);
-//     const data = await response.jsons();
-
-//     data.genres.forEach((item) => {
-//         getMoviesByGenres(item.id, item.name)
-//     })
-// }
 
 fetch(`${API.genresUrl}api_key=${API.apiKey}`)
     .then(response => response.json())
@@ -54,21 +44,21 @@ const makeCategoryElement = (category, data) => {
 }
 
 const makeCards = (id, data) => {
-    
+
     const movieContainer = document.getElementById(id);
 
-    data.map(
+    data.forEach(
         (item) => {
 
-        if (item.backdrop_path === null) {
-            item.backdrop_path = item.poster_path;
-            if (item.backdrop_path == null) {
-                return;
+            if (item.backdrop_path === null) {
+                item.backdrop_path = item.poster_path;
+                if (item.backdrop_path == null) {
+                    return;
+                }
             }
-        }
 
-        const movieCards = 
-        `
+            const movieCards =
+                `
         <div class="movie" onclick="location.href = 'movie.html?id=${item.id}'">
             <img src="${API.imgUrl}${item.backdrop_path}" alt="">
             <p class=stars> ★ ${item.vote_average}/10</p>
@@ -77,32 +67,15 @@ const makeCards = (id, data) => {
         </div>
         `;
 
-        render(movieContainer, movieCards)
+
+
+            render(movieContainer, movieCards)
+            
+        })
 
         
-
-    })
-    
 }
 
 
 
-
-// const input = document.querySelector('input')
-// const titleP =  document.querySelector('.movie-title')
-
-// input.addEventListener('keyup', (event) => {
-//     let titleA = item.title;
-//     // console.log(event.target.titleA)
-//     const value = input.value.toLowerCase();
-
-//         const results = data.filter((element) =>
-//         // console.log(titleA))
-        
-//         element.title.toLowerCase().search(value) > -1);
-
-//        console.log(results)
-//     //    console.log(data)
-
-//      render(movieContainer, results)   
 

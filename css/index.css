@@ -21,7 +21,7 @@
     overflow-y: hidden;
     scroll-behavior: smooth;
 
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .movie-container::-webkit-scrollbar {
@@ -112,23 +112,26 @@
 
 }
 
-#hero p {
+.hero-p{
     font-size: 4rem;
     font-weight: 800;
-
-    margin-top: 200px;
-    left: 28%;
-
-    background: transparent;
-
-    position: absolute;
-
+    
+    text-align: center;
+     
     color: rgba(255, 255, 255, 0.746);
-
+    
     letter-spacing: 4px;
 }
 
+.gradient p {
+
+    padding-top: 220px;
+
+
+}
+
 .gradient {
+    position: relative;
     height: 540px;
     background: linear-gradient(180deg, rgba(97, 97, 97, 0.13) 0%, rgb(24, 24, 24) 90%);
 }
